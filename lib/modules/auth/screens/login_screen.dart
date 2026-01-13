@@ -59,6 +59,7 @@ class LoginScreen extends GetView<LoginController> {
 
               CustomizeButton(
                 onTap: controller.login,
+                prefix: Ico,
                 buttonText: 'Login',
               ).marginOnly(bottom: 16),
             ],
