@@ -26,34 +26,34 @@ final appPages = [
     name: AppRoutes.main,
     page: () => MainScreen(),
     binding: MainBinding(),
-    // middlewares: [AuthMiddleware()],
+    middlewares: [AuthMiddleware()],
   ),
 
   GetPage(
     name: AppRoutes.home,
     page: () => HomeScreen(),
     binding: HomeBinding(),
-    // middlewares: [AuthMiddleware()],
+    middlewares: [AuthMiddleware()],
   ),
 
   GetPage(
     name: AppRoutes.calendar,
     page: () => CalendarScreen(),
     binding: CalendarBinding(),
-    // middlewares: [AuthMiddleware()],
+    middlewares: [AuthMiddleware()],
   ),
 
   GetPage(
     name: AppRoutes.tasks,
     page: () => TasksScreen(),
     binding: TasksBinding(),
-    // middlewares: [AuthMiddleware()],
+    middlewares: [AuthMiddleware()],
   ),
 
   GetPage(
     name: AppRoutes.profile,
     page: () => ProfileScreen(),
     binding: ProfileBinding(),
-    // middlewares: [AuthMiddleware()],
+    middlewares: [AuthMiddleware()],
   ),
 ];
