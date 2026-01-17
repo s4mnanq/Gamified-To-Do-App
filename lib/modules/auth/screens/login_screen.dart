@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamified_todo_app/core/constants/app_state.dart';
 import 'package:gamified_todo_app/modules/auth/controllers/login_controller.dart';
 import 'package:gamified_todo_app/widgets/customize_button.dart';
 import 'package:gamified_todo_app/widgets/customize_text_form_field.dart';
@@ -46,24 +47,46 @@ class LoginScreen extends GetView<LoginController> {
                       validator: controller.validateEmail,
                     ).marginOnly(bottom: 24),
 
-                    CustomizeTextFormField(
-                      controller: controller.passwordController,
-                      hintText: 'Enter your password',
-                      labelText: 'Password',
-                      validator: controller.validatePassword,
-                      obscureText: true,
-                    ),
+                    Obx(() {
+                      final isObscured = controller.isObscured.value;
+                      return CustomizeTextFormField(
+                        controller: controller.passwordController,
+                        hintText: 'Enter your password',
+                        labelText: 'Password',
+                        validator: controller.validatePassword,
+                        obscureText: isObscured,
+                        suffixIcon: _buildSuffixIcon(isObscured),
+                      );
+                    }),
                   ],
                 ),
               ).marginOnly(bottom: 72),
 
-              CustomizeButton(
-                onTap: controller.login,
-                buttonText: 'Login',
-              ).marginOnly(bottom: 16),
+              _buildLoginButton(context).marginOnly(bottom: 16),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildLoginButton(BuildContext context) {
+    return Obx(() {
+      final isLoading = controller.loginState.value.isLoading;
+      return CustomizeButton(
+        onTap: () => controller.login(context),
+        buttonText: 'Login',
+        isLoading: isLoading,
+      );
+    });
+  }
+
+  Widget _buildSuffixIcon(bool isObscured) {
+    return GestureDetector(
+      onTap: controller.togglePasswordVisibility,
+      child: Icon(
+        isObscured ? Icons.visibility_off : Icons.visibility,
+        color: Get.context?.theme.colorScheme.onSurface.withValues(alpha: 0.6),
       ),
     );
   }

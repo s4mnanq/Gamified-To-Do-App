@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-
 class AppLogger {
   static const String _appName = 'Gamified Todo';
 

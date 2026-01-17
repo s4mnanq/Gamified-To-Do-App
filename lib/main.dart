@@ -22,9 +22,3 @@ Future<void> main() async {
 
   runApp(const MyApp());
 }
-
-// how to run
-// For development:
-// flutter run --release
-// For production:
-// flutter run --debug

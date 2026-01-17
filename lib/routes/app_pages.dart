@@ -1,4 +1,5 @@
 import 'package:gamified_todo_app/modules/auth/bindings/login_binding.dart';
+import 'package:gamified_todo_app/modules/auth/screens/auth_gate_screen.dart';
 import 'package:gamified_todo_app/modules/auth/screens/login_screen.dart';
 import 'package:gamified_todo_app/modules/main/bindings/calendar_binding.dart';
 import 'package:gamified_todo_app/modules/main/bindings/home_binding.dart';
@@ -15,6 +16,7 @@ import 'package:gamified_todo_app/routes/middlewares/auth_middleware.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 final appPages = [
+  GetPage(name: AppRoutes.authGate, page: () => const AuthGateScreen()),
   GetPage(
     name: AppRoutes.login,
     page: () => LoginScreen(),

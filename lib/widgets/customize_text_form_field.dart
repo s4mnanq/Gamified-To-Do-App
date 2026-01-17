@@ -14,11 +14,12 @@ class CustomizeTextFormField extends StatelessWidget {
     this.onChanged,
     this.textStyle,
     this.onEditingComplete,
-    this.initialValue,
     this.inputFormatters,
     this.decoration,
     this.hintText,
     this.labelText,
+    this.prefixIcon,
+    this.suffixIcon,
   });
 
   final TextEditingController controller;
@@ -30,11 +31,12 @@ class CustomizeTextFormField extends StatelessWidget {
   final void Function(String)? onChanged;
   final TextStyle? textStyle;
   final VoidCallback? onEditingComplete;
-  final String? initialValue;
   final List<TextInputFormatter>? inputFormatters;
   final InputDecoration? decoration;
   final String? hintText;
   final String? labelText;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,6 @@ class CustomizeTextFormField extends StatelessWidget {
       focusNode: focusNode,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
-      initialValue: initialValue,
       inputFormatters: inputFormatters ?? [],
       style: textStyle ?? context.textTheme.bodyMedium,
       decoration:
@@ -71,6 +72,8 @@ class CustomizeTextFormField extends StatelessWidget {
             fillColor: context.theme.inputDecorationTheme.fillColor,
             hintText: hintText,
             labelText: labelText,
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
           ),
     );
   }

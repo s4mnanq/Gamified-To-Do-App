@@ -4,7 +4,17 @@ import 'package:get/get.dart';
 import '../constants/storage_keys.dart';
 
 class TokenStorage extends GetxService {
-  final FlutterSecureStorage _storage = const FlutterSecureStorage();
+  static const AndroidOptions _androidOptions = AndroidOptions(
+    // encryptedSharedPreferences: true,
+  );
+  static const IOSOptions _iosOptions = IOSOptions(
+    accessibility: KeychainAccessibility.first_unlock,
+  );
+
+  final FlutterSecureStorage _storage = const FlutterSecureStorage(
+    aOptions: _androidOptions,
+    iOptions: _iosOptions,
+  );
 
   Future<String?> readAccessToken() =>
       _storage.read(key: StorageKeys.accessToken);
