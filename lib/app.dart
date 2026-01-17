@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       getPages: appPages,
-      initialRoute: AppRoutes.authGate,
+      initialRoute: AppRoutes.home,
     );
   }
 }
