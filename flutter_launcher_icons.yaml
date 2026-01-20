@@ -1,0 +1,7 @@
+# to run this file, use:
+# dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/commons/app_icon.png"

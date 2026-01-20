@@ -1,0 +1,8 @@
+# to run this file, use:
+# flutter pub run flutter_native_splash:create --path=flutter_native_splash.yaml
+flutter_native_splash:
+  color: "#000000"
+  image: assets/images/commons/splash_logo.png
+  fullscreen: true
+  android_12:
+    color: "#000000"

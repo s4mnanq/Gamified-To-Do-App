@@ -92,12 +92,20 @@ class DioClient extends GetxService {
         onResponse: (response, handler) {
           final data = response.data;
           if (data is Map && data['success'] == false) {
-            throw ApiException(
-              message: data['message'] ?? 'Unknown error',
-              status: data['status'] ?? response.statusCode ?? 500,
-              error: data['error'],
-              details: data['details'],
+            handler.reject(
+              DioException(
+                requestOptions: response.requestOptions,
+                response: response,
+                type: DioExceptionType.badResponse,
+                error: ApiException(
+                  message: data['message'] ?? 'Unknown error',
+                  status: data['status'] ?? response.statusCode ?? 500,
+                  error: data['error'],
+                  details: data['details'],
+                ),
+              ),
             );
+            return;
           }
           handler.next(response);
         },
