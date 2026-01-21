@@ -29,17 +29,40 @@ class $AssetsImagesGen {
 
   /// Directory path: assets/images/commons
   $AssetsImagesCommonsGen get commons => const $AssetsImagesCommonsGen();
+
+  /// Directory path: assets/images/onboarding
+  $AssetsImagesOnboardingGen get onboarding =>
+      const $AssetsImagesOnboardingGen();
 }
 
 class $AssetsImagesCommonsGen {
   const $AssetsImagesCommonsGen();
+
+  /// File path: assets/images/commons/app_icon.png
+  AssetGenImage get appIcon =>
+      const AssetGenImage('assets/images/commons/app_icon.png');
 
   /// File path: assets/images/commons/splash_logo.png
   AssetGenImage get splashLogo =>
       const AssetGenImage('assets/images/commons/splash_logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [splashLogo];
+  List<AssetGenImage> get values => [appIcon, splashLogo];
+}
+
+class $AssetsImagesOnboardingGen {
+  const $AssetsImagesOnboardingGen();
+
+  /// File path: assets/images/onboarding/img-1.png
+  AssetGenImage get img1 =>
+      const AssetGenImage('assets/images/onboarding/img-1.png');
+
+  /// File path: assets/images/onboarding/img-2.png
+  AssetGenImage get img2 =>
+      const AssetGenImage('assets/images/onboarding/img-2.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [img1, img2];
 }
 
 class Assets {

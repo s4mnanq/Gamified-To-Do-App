@@ -11,12 +11,19 @@ import 'package:gamified_todo_app/modules/main/screens/home_screen.dart';
 import 'package:gamified_todo_app/modules/main/screens/main_screen.dart';
 import 'package:gamified_todo_app/modules/main/screens/profile_screen.dart';
 import 'package:gamified_todo_app/modules/main/screens/tasks_screen.dart';
+import 'package:gamified_todo_app/modules/onboarding/bindings/onboarding_binding.dart';
+import 'package:gamified_todo_app/modules/onboarding/screens/onboarding_screen.dart';
 import 'package:gamified_todo_app/routes/app_routes.dart';
 import 'package:gamified_todo_app/routes/middlewares/auth_middleware.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 final appPages = [
   GetPage(name: AppRoutes.authGate, page: () => const AuthGateScreen()),
+  GetPage(
+    name: AppRoutes.onboarding,
+    page: () => OnboardingScreen(),
+    binding: OnboardingBinding(),
+  ),
   GetPage(
     name: AppRoutes.login,
     page: () => LoginScreen(),

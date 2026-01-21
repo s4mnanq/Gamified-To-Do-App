@@ -1,6 +1,6 @@
 name: gamified_todo_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
@@ -16,6 +16,7 @@ dependencies:
   flutter_dotenv: ^6.0.0
   flutter_native_splash: ^2.4.7
   contribution_heatmap: ^0.5.3
+  shared_preferences: ^2.5.4
 
 dev_dependencies:
   flutter_test:
@@ -30,7 +31,26 @@ flutter:
   assets:
     - env/.env.dev
     - env/.env.prod
+    - assets/fonts/oxanium/
     - assets/images/commons/
+    - assets/images/onboarding/
+
+  fonts:
+    - family: Oxanium
+      fonts:
+        - asset: assets/fonts/oxanium/Oxanium-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/oxanium/Oxanium-Light.ttf
+          weight: 300
+        - asset: assets/fonts/oxanium/Oxanium-Regular.ttf
+        - asset: assets/fonts/oxanium/Oxanium-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/oxanium/Oxanium-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/oxanium/Oxanium-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/oxanium/Oxanium-ExtraBold.ttf
+          weight: 800
 
 # to generate the code for assets, fonts, etc., run:
 # dart run build_runner build --delete-conflicting-outputs

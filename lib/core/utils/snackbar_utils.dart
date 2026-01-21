@@ -284,21 +284,13 @@ class SnackbarUtils {
   static IconData _getIcon(_SnackbarType type) {
     switch (type) {
       case _SnackbarType.success:
-        return Platform.isIOS
-            ? CupertinoIcons.check_mark_circled_solid
-            : Icons.check_circle_rounded;
+        return Icons.check_circle_rounded;
       case _SnackbarType.error:
-        return Platform.isIOS
-            ? CupertinoIcons.xmark_circle_fill
-            : Icons.error_rounded;
+        return Icons.error_rounded;
       case _SnackbarType.warning:
-        return Platform.isIOS
-            ? CupertinoIcons.exclamationmark_triangle_fill
-            : Icons.warning_rounded;
+        return Icons.warning_rounded;
       case _SnackbarType.info:
-        return Platform.isIOS
-            ? CupertinoIcons.info_circle_fill
-            : Icons.info_rounded;
+        return Icons.info_rounded;
     }
   }
 
