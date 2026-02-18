@@ -70,22 +70,15 @@ class LoginScreen extends GetView<LoginController> {
   }
 
   Widget _buildLoginButton(BuildContext context) {
-    return CustomizeButton(
-      onTap: () => controller.login(context),
-      buttonText: 'Login',
-    );
+    return Obx(() {
+      final isLoading = controller.loginState.value.isLoading;
+      return CustomizeButton(
+        onTap: () => controller.login(context),
+        buttonText: 'Login',
+        isLoading: isLoading,
+      );
+    });
   }
-
-  // Widget _buildLoginButton(BuildContext context) {
-  //   return Obx(() {
-  //     final isLoading = controller.loginState.value.isLoading;
-  //     return CustomizeButton(
-  //       onTap: () => controller.login(context),
-  //       buttonText: 'Login',
-  //       isLoading: isLoading,
-  //     );
-  //   });
-  // }
 
   Widget _buildSuffixIcon(bool isObscured) {
     return GestureDetector(
