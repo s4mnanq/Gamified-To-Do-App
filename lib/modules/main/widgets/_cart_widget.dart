@@ -6,20 +6,20 @@ class _CartWidget extends StatelessWidget {
   final IconData icon;
   final RxInt number;
   final String nameCart;
-  final Color? colour;
+  final Color? color;
 
   _CartWidget({
     // super.key,
     required this.icon,
     required this.number,
     required this.nameCart,
-    this.colour,
+    this.color,
   });
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('Cart Got Tapped');
+        ShadowLog.i('Cart Got Tapped');
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.28,
@@ -32,7 +32,7 @@ class _CartWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Icon(icon, size: 48, color: colour),
+            Icon(icon, size: 48, color: color),
             Obx(
               () => Text(
                 '$number',

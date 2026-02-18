@@ -72,8 +72,8 @@ class LoginController extends GetxController {
     passwordError.value = null;
 
     if (loginFormKey.currentState?.validate() ?? false) {
-      final email = emailController.text.trim();
-      final password = passwordController.text;
+      // final email = emailController.text.trim();
+      // final password = passwordController.text;
 
       try {
         Get.offAllNamed(AppRoutes.main);

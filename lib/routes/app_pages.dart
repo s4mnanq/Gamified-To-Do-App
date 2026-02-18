@@ -1,9 +1,9 @@
 import 'package:gamified_todo_app/modules/auth/bindings/login_binding.dart';
 import 'package:gamified_todo_app/modules/auth/screens/auth_gate_screen.dart';
 import 'package:gamified_todo_app/modules/auth/screens/login_screen.dart';
-import 'package:gamified_todo_app/modules/main/bindings/addTask_binding.dart';
+import 'package:gamified_todo_app/modules/main/bindings/add_task_binding.dart';
 import 'package:gamified_todo_app/modules/main/bindings/calendar_binding.dart';
-import 'package:gamified_todo_app/modules/main/bindings/editTask_binding.dart';
+import 'package:gamified_todo_app/modules/main/bindings/edit_task_binding.dart';
 import 'package:gamified_todo_app/modules/main/bindings/home_binding.dart';
 import 'package:gamified_todo_app/modules/main/bindings/main_binding.dart';
 import 'package:gamified_todo_app/modules/main/bindings/profile_binding.dart';
@@ -64,7 +64,7 @@ final appPages = [
 
   GetPage(
     name: AppRoutes.addTask,
-    page: () => AddtaskScreen(),
+    page: () => AddTaskScreen(),
     binding: AddTaskBinding(),
   ),
 

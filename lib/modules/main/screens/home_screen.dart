@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:gamified_todo_app/modules/main/screens/tasks_screen.dart';
 import 'package:gamified_todo_app/routes/app_routes.dart';
 import 'package:get/get.dart';
+import 'package:shadow_log/shadow_log.dart';
 import '../controllers/home_controller.dart';
 part '../widgets/_cart_widget.dart';
 
@@ -134,7 +134,7 @@ class HomeScreen extends GetView<HomeController> {
                       ),
                       _CartWidget(
                         icon: Icons.bolt_rounded,
-                        colour: Colors.amber[900],
+                        color: Colors.amber[900],
                         number: controller.currentStreakNumber,
                         nameCart: 'Current Streak',
                       ),

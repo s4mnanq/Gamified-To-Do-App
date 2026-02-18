@@ -19,7 +19,7 @@ class EditTaskController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
+    super.onInit();
 
     final arg = Get.arguments;
     final TaskModel task = arg['task'];
@@ -31,7 +31,6 @@ class EditTaskController extends GetxController {
     newXpValueController.text = task.xp.toString();
   }
 
-  //
   String? validateAllForms(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter some text';
@@ -39,9 +38,6 @@ class EditTaskController extends GetxController {
     return null;
   }
 
-  //
-
-  // updated-Task Method
   void updatedTask() async {
     if (newformKey.currentState!.validate()) {
       tasksController.updateTask(
@@ -51,7 +47,7 @@ class EditTaskController extends GetxController {
           description: newDescriptionController.text,
           due: newDueDateController.text,
           xp: newXpValueController.text,
-          type: tasksController.lstTask[indexTask]['type'],
+          type: tasksController.tasks[indexTask]['type'],
         ),
       );
       await Future.delayed(Duration(milliseconds: 200), () {
@@ -60,6 +56,4 @@ class EditTaskController extends GetxController {
       });
     }
   }
-
-  //
 }

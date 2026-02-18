@@ -1,5 +1,6 @@
 import 'package:gamified_todo_app/routes/app_routes.dart';
 import 'package:get/get.dart';
+import 'package:shadow_log/shadow_log.dart';
 
 class HomeController extends GetxController {
   var username = ' Samnang'.obs;
@@ -10,17 +11,17 @@ class HomeController extends GetxController {
   var currentStreakNumber = 7.obs;
   var totalXpNumber = 16.obs;
 
-  void IncreaseCounter() {
+  void increaseCounter() {
     completedNumber.value++;
     currentStreakNumber.value++;
     totalXpNumber.value++;
-    levelXp.value +=1;
-    print('${completedNumber.value}');
-    print('${levelXp.value}');
+    levelXp.value += 1;
+    ShadowLog.i('${completedNumber.value}');
+    ShadowLog.i('${levelXp.value}');
   }
 
   void anAddTaskTap() {
-    IncreaseCounter();
+    increaseCounter();
     Get.toNamed(AppRoutes.addTask);
   }
 }

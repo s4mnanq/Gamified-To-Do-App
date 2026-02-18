@@ -110,13 +110,19 @@ class TasksScreen extends GetView<TasksController> {
                                           // maxLines: 1,
                                         ),
                                         Text(
-                                          task.description ?? 'uknown',
+                                          task.description ?? 'Unknown',
                                           style: TextStyle(fontSize: 11),
                                           overflow: TextOverflow.ellipsis,
                                           // maxLines: 2,
                                         ),
                                         Text(
                                           'Due : ${task.due}',
+                                          style: TextStyle(fontSize: 11),
+                                          overflow: TextOverflow.ellipsis,
+                                          // maxLines: 1,
+                                        ),
+                                        Text(
+                                          'Priority : ${task.priority}',
                                           style: TextStyle(fontSize: 11),
                                           overflow: TextOverflow.ellipsis,
                                           // maxLines: 1,

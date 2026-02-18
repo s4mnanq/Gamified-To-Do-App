@@ -30,7 +30,7 @@ class _TaskButtonWidget extends StatelessWidget {
 
     return GestureDetector(
       onTap: () => {
-        controller.updateColour(currentIndex),
+        controller.updateColor(currentIndex),
         debugPrint('$currentIndex'),
       },
       child: Container(

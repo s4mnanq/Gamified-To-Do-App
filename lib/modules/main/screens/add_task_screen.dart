@@ -3,19 +3,22 @@ import 'package:gamified_todo_app/core/utils/date_picker.dart';
 import 'package:gamified_todo_app/modules/main/controllers/add_task_controller.dart';
 
 import 'package:get/get.dart';
+import 'package:shadow_log/shadow_log.dart';
 part '../widgets/priority_widget.dart';
 
-class AddtaskScreen extends GetView<AddTaskController> {
-  const AddtaskScreen({super.key});
+class AddTaskScreen extends GetView<AddTaskController> {
+  const AddTaskScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Create Task')),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          behavior: HitTestBehavior.opaque,
           child: SingleChildScrollView(
+            padding: const .symmetric(horizontal: 12),
             child: Column(
               children: [
                 const SizedBox(height: 25),
@@ -45,10 +48,10 @@ class AddtaskScreen extends GetView<AddTaskController> {
                       const SizedBox(height: 25),
                       TextFormField(
                         controller: controller.descriptionController,
+                        onTapOutside: (_) => FocusScope.of(context).unfocus(),
                         onChanged: (value) {
                           debugPrint('description value $value');
                         },
-                        autofocus: true,
                         decoration: InputDecoration(
                           label: Text('Description'),
                           hint: Text(' Enter more detail'),
@@ -71,7 +74,7 @@ class AddtaskScreen extends GetView<AddTaskController> {
                       // const SizedBox(height: 25),
                       //Picked Date
                       TextFormField(
-                        readOnly: true, //
+                        readOnly: true,
                         controller: controller.dueDateController,
 
                         decoration: InputDecoration(
@@ -102,22 +105,23 @@ class AddtaskScreen extends GetView<AddTaskController> {
                         final selectedPriorityIndex =
                             controller.selectedPriorityIndex.value;
                         return SizedBox(
-                          height: 56,
+                          height: 62,
                           child: ListView.separated(
+                            padding: .zero,
                             separatorBuilder: (context, index) {
                               return const SizedBox(width: 16);
                             },
                             scrollDirection: .horizontal,
                             itemCount: controller.priorityCategory.length,
                             itemBuilder: (context, int index) {
-                              //
                               final priority =
                                   controller.priorityCategory[index];
-                              //
+
                               return _PriorityWidgetButton(
-                                txtMessage: priority.capitalize ?? priority,
+                                txtMessage: priority,
                                 currentIndex: index,
                                 selectedCategoryIndex: selectedPriorityIndex,
+                                onTap: () => controller.updatePriority(index),
                               );
                             },
                           ),
@@ -150,13 +154,13 @@ class AddtaskScreen extends GetView<AddTaskController> {
                 ),
                 // Priority Section
                 const SizedBox(height: 60.0),
-                // button cancell
+                // button cancel
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GestureDetector(
                       onTap: () {
-                        print("Cancel Button");
+                        ShadowLog.i("Cancel Button");
                         Get.back();
                       },
                       child: Container(
@@ -172,12 +176,8 @@ class AddtaskScreen extends GetView<AddTaskController> {
                     // Button Create
                     GestureDetector(
                       onTap: () {
-                        // controller.submiteValidate();
-                        controller.addedTask();
-                        // print("\n${controller.titleController.text}");
-                        // print(controller.descriptionController.text);
-                        // print(controller.dueDateController.text);
-                        // print(controller.xpValueController.text);
+                        // controller.submitValidate();
+                        controller.addTask();
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: 10),

@@ -6,7 +6,16 @@ class TaskModel {
   final String? due;
   final String? type;
   final String? xp;
-  TaskModel({this.title, this.description, this.due, this.xp, this.type});
+  final String? priority;
+
+  TaskModel({
+    this.title,
+    this.description,
+    this.due,
+    this.xp,
+    this.type,
+    this.priority,
+  });
 
   TaskModel copyWith({
     String? title,
@@ -14,6 +23,7 @@ class TaskModel {
     String? due,
     String? xp,
     String? type,
+    String? priority,
   }) {
     return TaskModel(
       title: title ?? this.title,
@@ -21,6 +31,7 @@ class TaskModel {
       due: due ?? this.due,
       xp: xp ?? this.xp,
       type: type ?? this.type,
+      priority: priority ?? this.priority,
     );
   }
 
@@ -31,6 +42,7 @@ class TaskModel {
       'due': due,
       'xp': xp,
       'type': type,
+      'priority': priority,
     };
   }
 
@@ -43,6 +55,7 @@ class TaskModel {
       due: map['due'] != null ? map['due'] as String : null,
       xp: map['xp'] != null ? map['xp'] as String : null,
       type: map['type'] != null ? map['type'] as String : null,
+      priority: map['priority'] != null ? map['priority'] as String : null,
     );
   }
 
@@ -53,7 +66,7 @@ class TaskModel {
 
   @override
   String toString() {
-    return 'TaskModel(title: $title, description: $description, due: $due, xp: $xp ,type: $type)';
+    return 'TaskModel(title: $title, description: $description, due: $due, xp: $xp ,type: $type, priority: $priority)';
   }
 
   @override
@@ -64,7 +77,8 @@ class TaskModel {
         other.description == description &&
         other.due == due &&
         other.xp == xp &&
-        other.type == type;
+        other.type == type &&
+        other.priority == priority;
   }
 
   @override
@@ -73,6 +87,7 @@ class TaskModel {
         description.hashCode ^
         due.hashCode ^
         xp.hashCode ^
-        type.hashCode;
+        type.hashCode ^
+        priority.hashCode;
   }
 }

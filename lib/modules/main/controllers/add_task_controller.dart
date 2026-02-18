@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamified_todo_app/core/constants/task_priority.dart';
 import 'package:gamified_todo_app/modules/main/controllers/main_controller.dart';
 // import 'package:gamified_todo_app/modules/main/controllers/main_controller.dart';
 import 'package:gamified_todo_app/modules/main/model/task_model.dart';
@@ -16,7 +17,7 @@ class AddTaskController extends GetxController {
   final xpValueController = TextEditingController();
 
   //Priority
-  final priorityCategory = ['Low', 'Medium', 'High'];
+  final priorityCategory = TaskPriority.values.map((e) => e.value).toList();
   final selectedPriorityIndex = 0.obs;
   final selectedPriority = ''.obs;
 
@@ -24,14 +25,14 @@ class AddTaskController extends GetxController {
   final formKey = GlobalKey<FormState>();
 
   // Updated Color Priority Button
-  void updatedColour(int priorityIndex) {
+  void updatePriority(int priorityIndex) {
     selectedPriorityIndex.value = priorityIndex;
     selectedPriority.value = priorityCategory[priorityIndex];
   }
 
   // Validate all Form Method
   String? validateAllForms(String? value) {
-    String message = 'Pleaes enter some text';
+    String message = 'Please enter some text';
     if (value == null || value.isEmpty) {
       return message;
     } else {
@@ -42,7 +43,7 @@ class AddTaskController extends GetxController {
   // DatePicked Method
   Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
 
-  void addedTask() async {
+  void addTask() async {
     if (formKey.currentState!.validate()) {
       final task = TaskModel(
         title: titleController.text,
@@ -50,13 +51,15 @@ class AddTaskController extends GetxController {
         due: dueDateController.text,
         xp: xpValueController.text,
         type: 'today',
+        priority: selectedPriority.value,
       );
       taskController.addTask(task: task);
-      //
+      taskController.tasks.refresh();
+
       if (!Get.isRegistered<MainController>()) {
         Get.put(() => MainController());
       }
-      final mainController = MainController();
+      final mainController = Get.find<MainController>();
       mainController.currentIndex.value = 1;
       //
       await Future.delayed(Duration(milliseconds: 200), () {
