@@ -20,7 +20,6 @@ class TasksController extends GetxController {
   @override
   void onInit() {
     selectedCategory.value = taskCategory[selectedCategoryIndex.value];
-
     tasks.assignAll([
       {
         'title': 'Build Flutter Projects',

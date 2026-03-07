@@ -64,7 +64,7 @@ class LoginController extends GetxController {
     } else if (value.length < 6) {
       return 'Password must be at least 6 characters long';
     }
-
+    
     return null;
   }
 
@@ -72,8 +72,8 @@ class LoginController extends GetxController {
     passwordError.value = null;
 
     if (loginFormKey.currentState?.validate() ?? false) {
-      // final email = emailController.text.trim();
-      // final password = passwordController.text;
+      final email = emailController.text.trim();
+      final password = passwordController.text;
 
       try {
         loginState.value = AppState.loading;

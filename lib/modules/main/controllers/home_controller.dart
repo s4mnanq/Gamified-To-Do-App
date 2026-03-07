@@ -12,10 +12,10 @@ class HomeController extends GetxController {
   var totalXpNumber = 16.obs;
 
   void increaseCounter() {
-    completedNumber.value++;
-    currentStreakNumber.value++;
-    totalXpNumber.value++;
-    levelXp.value += 1;
+    // completedNumber.value++;
+    // currentStreakNumber.value++;
+    // totalXpNumber.value++;
+    // levelXp.value += 1;
     ShadowLog.i('${completedNumber.value}');
     ShadowLog.i('${levelXp.value}');
   }
