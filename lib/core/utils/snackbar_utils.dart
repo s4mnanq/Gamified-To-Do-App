@@ -269,7 +269,7 @@ class SnackbarUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14),
           side: BorderSide(
-            color: colors.borderColor.withOpacity(0.5),
+            color: colors.borderColor.withValues(alpha:0.5),
             width: 1,
           ),
         ),

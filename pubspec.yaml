@@ -1,6 +1,6 @@
 name: gamified_todo_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
@@ -15,6 +15,7 @@ dependencies:
   flutter_secure_storage: ^10.0.0
   flutter_dotenv: ^6.0.0
   flutter_native_splash: ^2.4.7
+  shadow_log: ^0.2.0
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +31,7 @@ flutter:
     - env/.env.dev
     - env/.env.prod
     - assets/images/commons/
+
 
 # to generate the code for assets, fonts, etc., run:
 # dart run build_runner build --delete-conflicting-outputs
