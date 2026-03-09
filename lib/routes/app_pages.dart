@@ -7,6 +7,7 @@ import 'package:gamified_todo_app/modules/main/bindings/edit_task_binding.dart';
 import 'package:gamified_todo_app/modules/main/bindings/home_binding.dart';
 import 'package:gamified_todo_app/modules/main/bindings/main_binding.dart';
 import 'package:gamified_todo_app/modules/main/bindings/profile_binding.dart';
+import 'package:gamified_todo_app/modules/main/bindings/setting_binding.dart';
 import 'package:gamified_todo_app/modules/main/bindings/tasks_binding.dart';
 import 'package:gamified_todo_app/modules/main/screens/add_task_screen.dart';
 import 'package:gamified_todo_app/modules/main/screens/calendar_screen.dart';
@@ -14,6 +15,7 @@ import 'package:gamified_todo_app/modules/main/screens/edit_task_screen.dart';
 import 'package:gamified_todo_app/modules/main/screens/home_screen.dart';
 import 'package:gamified_todo_app/modules/main/screens/main_screen.dart';
 import 'package:gamified_todo_app/modules/main/screens/profile_screen.dart';
+import 'package:gamified_todo_app/modules/main/screens/setting_screen.dart';
 import 'package:gamified_todo_app/modules/main/screens/tasks_screen.dart';
 import 'package:gamified_todo_app/routes/app_routes.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -59,6 +61,13 @@ final appPages = [
     name: AppRoutes.profile,
     page: () => ProfileScreen(),
     binding: ProfileBinding(),
+    // middlewares: [AuthMiddleware()],
+  ),
+  
+  GetPage(
+    name: AppRoutes.setting,
+    page: () => const SettingScreen(),
+    binding: SettingBinding(),
     // middlewares: [AuthMiddleware()],
   ),
 
