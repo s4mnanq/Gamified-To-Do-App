@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamified_todo_app/modules/main/controllers/profile_controller.dart';
 import 'package:gamified_todo_app/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:shadow_log/shadow_log.dart';
@@ -6,8 +7,8 @@ import '../controllers/home_controller.dart';
 part '../widgets/_cart_widget.dart';
 
 class HomeScreen extends GetView<HomeController> {
-  @override
-  const HomeScreen({super.key});
+  final profileController = Get.find<ProfileController>();
+  HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +19,7 @@ class HomeScreen extends GetView<HomeController> {
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: .spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,26 +36,36 @@ class HomeScreen extends GetView<HomeController> {
                         ),
                       ],
                     ),
-                    CircleAvatar(
-                      radius: 25.9,
-                      child: CircleAvatar(
-                        radius: 25.0,
-                        backgroundImage: AssetImage(
-                          'assets/images/commons/avartaProfile.png',
+                    Obx(
+                      () => CircleAvatar(
+                        radius: 25.9,
+                        child: CircleAvatar(
+                          radius: 25.0,
+                          backgroundImage:
+                              profileController.isConfirmImage.value == true
+                              ? FileImage(profileController.image.value!)
+                              : AssetImage(
+                                  'assets/images/commons/profile_empty.png',
+                                ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 20),
                 Center(
                   child: Column(
                     children: [
                       Obx(
                         () => Text(
                           'Level ${controller.levelTotal.value}',
+                          // style: TextStyle(
+                          //   fontSize: 38,
+                          //   fontWeight: FontWeight.bold,
+                          //   wordSpacing: 3,
+                          // ),
                           style: TextStyle(
-                            fontSize: 38,
+                            fontSize: 38.0,
                             fontWeight: FontWeight.bold,
                             wordSpacing: 3,
                           ),
@@ -146,8 +157,7 @@ class HomeScreen extends GetView<HomeController> {
                     ],
                   ),
                 ),
-
-                const SizedBox(height: 60),
+                const SizedBox(height: 140),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(

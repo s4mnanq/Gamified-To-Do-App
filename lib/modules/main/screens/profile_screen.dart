@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gamified_todo_app/modules/main/screens/setting_screen.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:gamified_todo_app/routes/app_routes.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/state_manager.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
@@ -58,9 +57,14 @@ class ProfileScreen extends GetView<ProfileController> {
         children: [
           Row(
             children: [
-              const CircleAvatar(
-                radius: 37,
-                backgroundImage: AssetImage('assets/images/commons/avatar.png'),
+              // const CircleAvatar(radius: 37, backgroundImage: FileImage()),
+              Obx(
+                () => CircleAvatar(
+                  radius: 37,
+                  backgroundImage: controller.isConfirmImage.value == true
+                      ? FileImage(controller.image.value!)
+                      : AssetImage('assets/images/commons/profile_empty.png'),
+                ),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -86,14 +90,19 @@ class ProfileScreen extends GetView<ProfileController> {
               Column(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.settings, color: Colors.green),
+                    icon: const Icon(Icons.settings, color: Colors.red),
                     onPressed: () {
-                      Get.to(() => const SettingScreen());
+                      // Get.to(() => const SettingScreen());
+                      Get.toNamed(AppRoutes.setting);
                     },
                   ),
-
                   SizedBox(height: 25),
-                  const Icon(Icons.edit, color: Colors.green),
+                  IconButton(
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.editProfile);
+                    },
+                    icon: Icon(Icons.edit, color: Colors.blue),
+                  ),
                 ],
               ),
             ],
@@ -150,6 +159,7 @@ class ProfileScreen extends GetView<ProfileController> {
         children: [
           CircleAvatar(
             backgroundColor: iconColor.withOpacity(0.2),
+            // backgroundColor: iconColor.withAlpha((0.2 * 355).toInt()),
             child: Icon(icon, color: iconColor),
           ),
           const SizedBox(width: 12),

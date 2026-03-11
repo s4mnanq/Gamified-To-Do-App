@@ -27,46 +27,52 @@ class SettingScreen extends GetView<SettingController> {
         child: Column(
           children: [
             /// DARK MODE
-            Obx(() => _settingTile(
-                  icon: Icons.dark_mode,
-                  iconColor: Colors.green,
-                  title: 'Dark Mode',
-                  subtitle: 'Toggle dark theme',
-                  highlighted: true,
-                  trailing: Switch(
-                    value: controller.isDarkMode.value,
-                    activeColor: Colors.green,
-                    onChanged: controller.toggleDarkMode,
-                  ),
-                )),
+            Obx(
+              () => _settingTile(
+                icon: Icons.dark_mode,
+                iconColor: Colors.green,
+                title: 'Dark Mode',
+                subtitle: 'Toggle dark theme',
+                highlighted: true,
+                trailing: Switch(
+                  value: controller.isDarkMode.value,
+                  activeThumbColor: Colors.green,
+                  onChanged: controller.toggleDarkMode,
+                ),
+              ),
+            ),
             const SizedBox(height: 12),
 
             /// DAILY REMINDER
-            Obx(() => _settingTile(
-                  icon: Icons.notifications,
-                  iconColor: Colors.green,
-                  title: 'Daily Reminder',
-                  subtitle: 'Notification time',
-                  trailing: GestureDetector(
-                    onTap: () => controller.pickTime(context),
-                    child: _pillText(
-                      controller.reminderTime.value.format(context),
-                    ),
+            Obx(
+              () => _settingTile(
+                icon: Icons.notifications,
+                iconColor: Colors.green,
+                title: 'Daily Reminder',
+                subtitle: 'Notification time',
+                trailing: GestureDetector(
+                  onTap: () => controller.pickTime(context),
+                  child: _pillText(
+                    controller.reminderTime.value.format(context),
                   ),
-                )),
+                ),
+              ),
+            ),
             const SizedBox(height: 12),
 
             /// LANGUAGE
-            Obx(() => _settingTile(
-                  icon: Icons.language,
-                  iconColor: Colors.green,
-                  title: 'Language',
-                  subtitle: 'App language',
-                  trailing: GestureDetector(
-                    onTap: _showLanguageSheet,
-                    child: _pillText(controller.language.value),
-                  ),
-                )),
+            Obx(
+              () => _settingTile(
+                icon: Icons.language,
+                iconColor: Colors.green,
+                title: 'Language',
+                subtitle: 'App language',
+                trailing: GestureDetector(
+                  onTap: _showLanguageSheet,
+                  child: _pillText(controller.language.value),
+                ),
+              ),
+            ),
             const Spacer(),
 
             /// LOG OUT
@@ -105,26 +111,25 @@ class SettingScreen extends GetView<SettingController> {
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            _languageOption('English'),
-            _languageOption('Khmer'),
-          ],
+          children: [_languageOption('English'), _languageOption('Khmer')],
         ),
       ),
     );
   }
 
   Widget _languageOption(String value) {
-    return Obx(() => ListTile(
-          title: Text(value, style: const TextStyle(color: Colors.white)),
-          trailing: controller.language.value == value
-              ? const Icon(Icons.check, color: Colors.green)
-              : null,
-          onTap: () {
-            controller.setLanguage(value);
-            Get.back();
-          },
-        ));
+    return Obx(
+      () => ListTile(
+        title: Text(value, style: const TextStyle(color: Colors.white)),
+        trailing: controller.language.value == value
+            ? const Icon(Icons.check, color: Colors.green)
+            : null,
+        onTap: () {
+          controller.setLanguage(value);
+          Get.back();
+        },
+      ),
+    );
   }
 
   Widget _settingTile({
@@ -152,15 +157,19 @@ class SettingScreen extends GetView<SettingController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title,
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16)),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
+                ),
                 const SizedBox(height: 4),
-                Text(subtitle,
-                    style:
-                        const TextStyle(color: Colors.grey, fontSize: 13)),
+                Text(
+                  subtitle,
+                  style: const TextStyle(color: Colors.grey, fontSize: 13),
+                ),
               ],
             ),
           ),

@@ -13,19 +13,19 @@ class TasksScreen extends GetView<TasksController> {
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 99,
-        leading: GestureDetector(
-          onTap: () {
-            // Get.toNamed(AppRoutes.home);
-            Get.back();
-          },
-          child: Row(
-            children: [
-              Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-              SizedBox(width: 4),
-              Text('Back', style: TextStyle(fontSize: 15)),
-            ],
-          ),
-        ),
+        // leading: GestureDetector(
+        //   onTap: () {
+        //     // Get.toNamed(AppRoutes.home);
+        //     Get.back();
+        //   },
+        //   child: Row(
+        //     children: [
+        //       Icon(Icons.arrow_back_ios_new_rounded, size: 20),
+        //       SizedBox(width: 4),
+        //       Text('Back', style: TextStyle(fontSize: 15)),
+        //     ],
+        //   ),
+        // ),
         title: Text('Task'),
       ),
       body: SafeArea(

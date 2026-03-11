@@ -16,6 +16,7 @@ dependencies:
   flutter_dotenv: ^6.0.0
   flutter_native_splash: ^2.4.7
   shadow_log: ^0.2.0
+  image_picker: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -31,7 +32,6 @@ flutter:
     - env/.env.dev
     - env/.env.prod
     - assets/images/commons/
-
 
 # to generate the code for assets, fonts, etc., run:
 # dart run build_runner build --delete-conflicting-outputs

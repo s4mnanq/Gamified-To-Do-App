@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shadow_log/shadow_log.dart';
 
 class HomeController extends GetxController {
+  // final HomeController homeController = Get.find<HomeController>();
   var username = ' Samnang'.obs;
   var levelTotal = 72.obs;
   var levelXp = 71.0.obs;

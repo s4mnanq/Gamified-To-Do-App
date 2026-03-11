@@ -10,4 +10,5 @@ class AppRoutes {
   static const String setting = '/setting';
   static const String addTask = '/add-task';
   static const String editTask = '/edit-task';
+  static const String editProfile = '/edit-profile';
 }
