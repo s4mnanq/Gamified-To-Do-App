@@ -8,6 +8,7 @@ part '../widgets/_cart_widget.dart';
 
 class HomeScreen extends GetView<HomeController> {
   final profileController = Get.find<ProfileController>();
+
   HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
@@ -28,15 +29,38 @@ class HomeScreen extends GetView<HomeController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text('Good Morning,'),
-                              Obx(
-                                () => Text(
-                                  '     ${controller.username.value}',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
+                              Obx(() {
+                                return Padding(
+                                  padding: EdgeInsets.only(left: 40),
+                                  child: controller.username.value == ''
+                                      ? Text(
+                                          'Username',
+                                          style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold,
+                                            color: const Color.fromARGB(
+                                              255,
+                                              1,
+                                              255,
+                                              10,
+                                            ),
+                                          ),
+                                        )
+                                      : Text(
+                                          controller.username.value,
+                                          style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold,
+                                            color: const Color.fromARGB(
+                                              255,
+                                              1,
+                                              255,
+                                              10,
+                                            ),
+                                          ),
+                                        ),
+                                );
+                              }),
                             ],
                           ),
                           Obx(
@@ -79,7 +103,7 @@ class HomeScreen extends GetView<HomeController> {
                             Text(
                               'Adventurer Quest',
                               style: TextStyle(
-                                color: Colors.green,
+                                color: const Color.fromARGB(255, 1, 255, 10),
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -201,7 +225,7 @@ class HomeScreen extends GetView<HomeController> {
                     SizedBox(width: 10),
                     Expanded(
                       child: Container(
-                        height: 51,
+                        height: 52.5,
                         decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 1, 255, 10),
                           borderRadius: BorderRadius.circular(12),

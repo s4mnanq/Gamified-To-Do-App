@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 // import 'package:gamified_todo_app/modules/main/controllers/edit_profile_controller.dart';
 import 'package:gamified_todo_app/modules/main/controllers/profile_controller.dart';
+import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:get/state_manager.dart';
 
 class EditProfileScreen extends GetView<ProfileController> {
@@ -133,9 +135,15 @@ class EditProfileScreen extends GetView<ProfileController> {
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () {
-                          controller.submitProfile();
-                          //
+                        onPressed: () async {
+                          bool success = await controller.submitProfile();
+
+                          if (success) {
+                            Get.snackbar("Success", "Profile updated");
+                            Get.back();
+                          } else {
+                            Get.snackbar("Failed", "Please select a profile");
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
@@ -185,7 +193,7 @@ class EditProfileScreen extends GetView<ProfileController> {
         if (value == null || value.isEmpty) {
           return 'Please enter $formName';
         }
-        if (value.length > 40) {
+        if (value.length > 150) {
           return 'Text is full';
         }
         return null;

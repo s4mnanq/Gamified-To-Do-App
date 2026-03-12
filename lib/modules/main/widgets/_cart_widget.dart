@@ -22,7 +22,7 @@ class _CartWidget extends StatelessWidget {
         ShadowLog.i('Cart Got Tapped');
       },
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.28,
+        width: MediaQuery.of(context).size.width * 0.278,
         padding: const EdgeInsets.symmetric(vertical: 12),
 
         decoration: BoxDecoration(

@@ -84,5 +84,9 @@ final appPages = [
     binding: EditTaskBinding(),
   ),
 
-  GetPage(name: AppRoutes.editProfile, page: () => EditProfileScreen()),
+  GetPage(
+    name: AppRoutes.editProfile,
+    page: () => EditProfileScreen(),
+    binding: ProfileBinding(),
+  ),
 ];

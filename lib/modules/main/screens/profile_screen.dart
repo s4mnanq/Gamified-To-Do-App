@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gamified_todo_app/routes/app_routes.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
@@ -51,65 +50,91 @@ class ProfileScreen extends GetView<ProfileController> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1E1E),
+        // color: const Color(0xFF1E1E1E),
+        color: const Color.fromARGB(255, 48, 45, 45),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: Colors.green, width: 1.5),
       ),
       child: Column(
         children: [
-          Row(
-            children: [
-              // const CircleAvatar(radius: 37, backgroundImage: FileImage()),
-              Obx(
-                () => CircleAvatar(
-                  radius: 37,
-                  backgroundImage: controller.isConfirmImage.value == true
-                      ? FileImage(controller.image.value!)
-                      : AssetImage('assets/images/commons/profile_empty.png'),
+          SizedBox(
+            height: 135,
+            child: Row(
+              children: [
+                Obx(
+                  () => CircleAvatar(
+                    radius: 40,
+                    backgroundImage: controller.isConfirmImage.value
+                        ? FileImage(controller.image.value!)
+                        : const AssetImage(
+                            'assets/images/commons/profile_empty.png',
+                          ),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Madara Uchiha',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 21,
-                        fontWeight: FontWeight.bold,
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: .center,
+                    crossAxisAlignment: .start,
+                    children: [
+                      Obx(
+                        () => controller.username.value == ''
+                            ? const Text(
+                                'Username',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: Color.fromARGB(255, 1, 255, 10),
+                                ),
+                              )
+                            : Text(
+                                controller.username.value,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: Color.fromARGB(255, 1, 255, 10),
+                                ),
+                              ),
                       ),
+                      const SizedBox(height: 1),
+                      Obx(
+                        () => controller.bio.value == ''
+                            ? const Text(
+                                'No bio',
+                                style: TextStyle(fontSize: 11.5),
+                              )
+                            : Text(
+                                controller.bio.value,
+                                maxLines: 4,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.settings, color: Colors.red),
+                      onPressed: () => Get.toNamed(AppRoutes.setting),
                     ),
-                    SizedBox(height: 4),
-                    Text(
-                      'I Love Sleeping',
-                      style: TextStyle(color: Colors.grey, fontSize: 16),
+                    IconButton(
+                      icon: const Icon(Icons.edit, color: Colors.blue),
+                      onPressed: () => Get.toNamed(AppRoutes.editProfile),
                     ),
                   ],
                 ),
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.settings, color: Colors.red),
-                    onPressed: () {
-                      // Get.to(() => const SettingScreen());
-                      Get.toNamed(AppRoutes.setting);
-                    },
-                  ),
-                  SizedBox(height: 25),
-                  IconButton(
-                    onPressed: () {
-                      Get.toNamed(AppRoutes.editProfile);
-                    },
-                    icon: Icon(Icons.edit, color: Colors.blue),
-                  ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
-          const SizedBox(height: 80),
+
+          const SizedBox(height: 100),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
             decoration: BoxDecoration(
