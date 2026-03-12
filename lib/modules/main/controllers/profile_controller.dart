@@ -32,6 +32,8 @@ class ProfileController extends GetxController {
   Future<void> submitProfile() async {
     // validate form
     if (!(formKey.currentState!.validate())) return;
+    debugPrint('Username = ${usernameController.text}');
+    debugPrint('Bio = ${bioController.text}');
 
     // validat prfile
     if (image.value == null) {
@@ -40,7 +42,7 @@ class ProfileController extends GetxController {
         'Fialed',
         'Please select a profile',
         colorText: Colors.redAccent,
-        snackPosition: SnackPosition.BOTTOM,
+        snackPosition: SnackPosition.TOP,
       );
       debugPrint('No image');
       return;
@@ -52,10 +54,9 @@ class ProfileController extends GetxController {
       'Success',
       'Profile\' have been updated',
       colorText: Colors.green,
-      snackPosition: SnackPosition.BOTTOM,
+      snackPosition: SnackPosition.TOP,
     );
-    debugPrint('Username = ${usernameController.text}');
-    debugPrint('Bio = ${usernameController.text}');
+
     debugPrint('Image Path = ${image.value!.path}');
   }
 

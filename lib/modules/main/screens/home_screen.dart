@@ -12,182 +12,211 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: .spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text('Good Morning,'),
-                        Obx(
-                          () => Text(
-                            '     ${controller.username.value}',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Obx(
-                      () => CircleAvatar(
-                        radius: 25.9,
-                        child: CircleAvatar(
-                          radius: 25.0,
-                          backgroundImage:
-                              profileController.isConfirmImage.value == true
-                              ? FileImage(profileController.image.value!)
-                              : AssetImage(
-                                  'assets/images/commons/profile_empty.png',
-                                ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Center(
+      body: SizedBox.expand(
+        child: SafeArea(
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 120),
                   child: Column(
-                    children: [
-                      Obx(
-                        () => Text(
-                          'Level ${controller.levelTotal.value}',
-                          // style: TextStyle(
-                          //   fontSize: 38,
-                          //   fontWeight: FontWeight.bold,
-                          //   wordSpacing: 3,
-                          // ),
-                          style: TextStyle(
-                            fontSize: 38.0,
-                            fontWeight: FontWeight.bold,
-                            wordSpacing: 3,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        'Adventurer Quest',
-                        style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20.0),
-                Container(
-                  padding: EdgeInsets.all(16),
-
-                  // width: MediaQuery.of(context).size.width * 29,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    border: BoxBorder.all(color: Colors.green, width: 2.0),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: .spaceBetween,
                         children: [
-                          const Text(
-                            'Level XP',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text('Good Morning,'),
+                              Obx(
+                                () => Text(
+                                  '     ${controller.username.value}',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           Obx(
-                            () => Text(
-                              '${controller.levelXp.value}/100.0 XP',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                wordSpacing: 2.0,
-                                letterSpacing: 0.5,
+                            () => CircleAvatar(
+                              radius: 25.9,
+                              child: CircleAvatar(
+                                radius: 25.0,
+                                backgroundImage:
+                                    profileController.isConfirmImage.value ==
+                                        true
+                                    ? FileImage(profileController.image.value!)
+                                    : AssetImage(
+                                        'assets/images/commons/profile_empty.png',
+                                      ),
                               ),
                             ),
                           ),
                         ],
                       ),
-
-                      Obx(() => _buildProcessColor()),
-
-                      Text(
-                        'Daily Goal\nProcess',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
+                      const SizedBox(height: 20),
+                      Center(
+                        child: Column(
+                          children: [
+                            Obx(
+                              () => Text(
+                                'Level ${controller.levelTotal.value}',
+                                // style: TextStyle(
+                                //   fontSize: 38,
+                                //   fontWeight: FontWeight.bold,
+                                //   wordSpacing: 3,
+                                // ),
+                                style: TextStyle(
+                                  fontSize: 38.0,
+                                  fontWeight: FontWeight.bold,
+                                  wordSpacing: 3,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              'Adventurer Quest',
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
+                      const SizedBox(height: 20.0),
+                      Container(
+                        padding: EdgeInsets.all(16),
 
-                //
-                IntrinsicHeight(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _CartWidget(
-                        icon: Icons.check_box_outlined,
-                        number: controller.completedNumber,
-                        nameCart: 'Completed',
+                        // width: MediaQuery.of(context).size.width * 29,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: BoxBorder.all(
+                            color: Colors.green,
+                            width: 2.0,
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  'Level XP',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Obx(
+                                  () => Text(
+                                    '${controller.levelXp.value}/100.0 XP',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      wordSpacing: 2.0,
+                                      letterSpacing: 0.5,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            Obx(() => _buildProcessColor()),
+
+                            Text(
+                              'Daily Goal\nProcess',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      _CartWidget(
-                        icon: Icons.bolt_rounded,
-                        color: Colors.amber[900],
-                        number: controller.currentStreakNumber,
-                        nameCart: 'Current Streak',
+                      const SizedBox(height: 20),
+
+                      //
+                      IntrinsicHeight(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            _CartWidget(
+                              icon: Icons.check_box_outlined,
+                              number: controller.completedNumber,
+                              nameCart: 'Completed',
+                            ),
+                            _CartWidget(
+                              icon: Icons.bolt_rounded,
+                              color: Colors.amber[900],
+                              number: controller.currentStreakNumber,
+                              nameCart: 'Current Streak',
+                            ),
+                            _CartWidget(
+                              icon: Icons.check_box_outlined,
+                              number: controller.totalXpNumber,
+                              nameCart: 'Total XP',
+                            ),
+                          ],
+                        ),
                       ),
-                      _CartWidget(
-                        icon: Icons.check_box_outlined,
-                        number: controller.totalXpNumber,
-                        nameCart: 'Total XP',
-                      ),
+                      const SizedBox(height: 140),
                     ],
                   ),
                 ),
-                const SizedBox(height: 140),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Get.toNamed(AppRoutes.tasks);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      // backgroundColor: Colors.green,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusGeometry.circular(12),
+              ),
+              //
+              Positioned(
+                right: 16,
+                left: 16,
+                bottom: 10,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 6,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Get.toNamed(AppRoutes.tasks);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          // backgroundColor: Colors.green,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadiusGeometry.circular(12),
+                          ),
+                        ),
+                        child: Text(
+                          'View Task',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 13,
+                          ),
+                        ),
                       ),
                     ),
-                    child: Text(
-                      'View Task',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 13,
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Container(
+                        height: 51,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 1, 255, 10),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: IconButton(
+                          onPressed: controller.AddTaskTap,
+                          icon: Icon(Icons.add, color: Colors.black),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: controller.anAddTaskTap,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        child: Icon(Icons.add, size: 28, fontWeight: FontWeight.w500),
       ),
     );
   }

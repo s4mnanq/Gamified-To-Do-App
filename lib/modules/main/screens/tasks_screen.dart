@@ -30,7 +30,7 @@ class TasksScreen extends GetView<TasksController> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.all(16),
           child: Column(
             children: [
               const SizedBox(height: 20),

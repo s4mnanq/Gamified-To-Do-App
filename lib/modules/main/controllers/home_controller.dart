@@ -21,7 +21,7 @@ class HomeController extends GetxController {
     ShadowLog.i('${levelXp.value}');
   }
 
-  void anAddTaskTap() {
+  void AddTaskTap() {
     increaseCounter();
     Get.toNamed(AppRoutes.addTask);
   }

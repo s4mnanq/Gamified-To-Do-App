@@ -28,11 +28,14 @@ class EditProfileScreen extends GetView<ProfileController> {
                       Center(
                         child: Stack(
                           children: [
-                            CircleAvatar(
-                              radius: 91,
-                              backgroundColor: Colors.green,
-                              child: Obx(() {
-                                return CircleAvatar(
+                            Obx(
+                              () => CircleAvatar(
+                                radius: 91,
+                                // backgroundColor: controller. Colors.green,
+                                backgroundColor: controller.image.value != null
+                                    ? Colors.green
+                                    : Colors.redAccent,
+                                child: CircleAvatar(
                                   radius: 87,
                                   backgroundImage:
                                       controller.image.value == null
@@ -40,15 +43,15 @@ class EditProfileScreen extends GetView<ProfileController> {
                                           'assets/images/commons/profile_empty.png',
                                         )
                                       : FileImage(controller.image.value!),
-                                );
-                              }),
+                                ),
+                              ),
                             ),
                             Positioned(
                               right: 10,
                               bottom: 0,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(.3),
+                                  color: Colors.white.withOpacity(.5),
                                   borderRadius: BorderRadius.circular(50),
                                 ),
                                 child: IconButton(
@@ -105,6 +108,7 @@ class EditProfileScreen extends GetView<ProfileController> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
+
                             const SizedBox(height: 6),
                             _textFormCustome(
                               hintTxt: 'Bio',
@@ -124,7 +128,7 @@ class EditProfileScreen extends GetView<ProfileController> {
               Positioned(
                 left: 16,
                 right: 16,
-                bottom: 0,
+                bottom: 10,
                 child: Row(
                   children: [
                     Expanded(

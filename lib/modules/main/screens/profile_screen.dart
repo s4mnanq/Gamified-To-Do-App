@@ -24,6 +24,7 @@ class ProfileScreen extends GetView<ProfileController> {
                 title: 'Current Streak',
                 value: '5 days',
               ),
+
               const SizedBox(height: 15),
               _statTile(
                 icon: Icons.checklist,
@@ -31,6 +32,7 @@ class ProfileScreen extends GetView<ProfileController> {
                 title: 'Task Completed',
                 value: '156',
               ),
+
               const SizedBox(height: 15),
               _statTile(
                 icon: Icons.emoji_events,
