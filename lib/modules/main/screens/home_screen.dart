@@ -48,6 +48,7 @@ class HomeScreen extends GetView<HomeController> {
                                     profileController.isConfirmImage.value ==
                                         true
                                     ? FileImage(profileController.image.value!)
+                                          as ImageProvider
                                     : AssetImage(
                                         'assets/images/commons/profile_empty.png',
                                       ),

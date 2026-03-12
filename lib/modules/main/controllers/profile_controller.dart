@@ -4,7 +4,6 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class ProfileController extends GetxController {
-  //
   final usernameController = TextEditingController();
   final bioController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -19,12 +18,14 @@ class ProfileController extends GetxController {
   }
 
   Future<void> pickImage() async {
-    final pickFile = await ImagePicker().pickImage(source: ImageSource.gallery);
-
-    if (pickFile == null) {
-      return;
-    } else {
+    try {
+      final pickFile = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+      );
+      if (pickFile == null) return;
       image.value = File(pickFile.path);
+    } catch (e) {
+      debugPrint('Error : $e');
     }
   }
 
