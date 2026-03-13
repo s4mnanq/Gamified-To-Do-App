@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:gamified_todo_app/modules/main/controllers/edit_profile_controller.dart';
 import 'package:gamified_todo_app/modules/main/controllers/profile_controller.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:get/state_manager.dart';
 
 class EditProfileScreen extends GetView<ProfileController> {
   const EditProfileScreen({super.key});
@@ -139,10 +136,15 @@ class EditProfileScreen extends GetView<ProfileController> {
                           bool success = await controller.submitProfile();
 
                           if (success) {
-                            Get.snackbar("Success", "Profile updated");
-                            Get.back();
-                          } else {
-                            Get.snackbar("Failed", "Please select a profile");
+                            await Future.delayed(Duration(seconds: 1), () {
+                              Get.back();
+                            });
+                            Get.snackbar(
+                              'Success',
+                              'Profile have been updated.',
+                              backgroundColor: Colors.green,
+                              duration: Duration(seconds: 1)
+                            );
                           }
                         },
                         style: ElevatedButton.styleFrom(

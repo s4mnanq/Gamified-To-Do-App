@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gamified_todo_app/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -46,43 +45,73 @@ class ProfileController extends GetxController {
   }
 
   // submit Image button
-  Future<bool> submitProfile() async {
-    // validate form
-    try {
-      if (!(formKey.currentState!.validate())) return false;
-      debugPrint('Username = ${usernameController.text}');
-      debugPrint('Bio = ${bioController.text}');
+  // Future<void> submitProfile() async {
+  //   // validate form
+  //   try {
+  //     if (!(formKey.currentState!.validate())) return;
+  //     debugPrint('Username = ${usernameController.text}');
+  //     debugPrint('Bio = ${bioController.text}');
 
-      // validat prfile
+  //     // validat prfile
+  //     if (image.value == null) {
+  //       isConfirmImage.value = false;
+  //       Get.snackbar(
+  //         'Fialed',
+  //         'Please select a profile',
+  //         colorText: Colors.redAccent,
+  //         snackPosition: SnackPosition.TOP,
+  //       );
+  //       debugPrint('No image');
+  //       return;
+  //     }
+
+  //     //if success
+  //     Get.snackbar(
+  //       'Success',
+  //       'Profile\' have been updated',
+  //       colorText: Colors.green,
+  //       snackPosition: SnackPosition.TOP,
+  //     );
+  //     debugPrint('Username = ${usernameController.text}');
+  //     debugPrint('Username = ${bioController.text}');
+  //     debugPrint('Image Path = ${image.value!.path}');
+  //     //
+  //     isConfirmImage.value = true;
+  //     return;
+  //   } catch (e) {
+  //     debugPrint('Error == $e');
+  //     return;
+  //   }
+  // }
+
+  Future<bool> submitProfile() async {
+    try {
+      if (!(formKey.currentState!.validate())) {
+        return false;
+      }
       if (image.value == null) {
-        isConfirmImage.value = false;
         Get.snackbar(
-          'Fialed',
-          'Please select a profile',
-          colorText: Colors.redAccent,
-          snackPosition: SnackPosition.TOP,
+          'Failed',
+          'Please select an image profile',
+          backgroundColor: Colors.redAccent,
         );
-        debugPrint('No image');
+        debugPrint('No image selected');
+        // isConfirmImage = false.obs;
+        isConfirmImage.value = false;
         return false;
       }
 
-      //if success
-      Get.snackbar(
-        'Success',
-        'Profile\' have been updated',
-        colorText: Colors.green,
-        snackPosition: SnackPosition.TOP,
-      );
+      // if(success){
       debugPrint('Username = ${usernameController.text}');
-      debugPrint('Username = ${bioController.text}');
-      debugPrint('Image Path = ${image.value!.path}');
-      //
+      debugPrint('Bio = ${bioController.text}');
+      // isConfirmImage = true.obs;
       isConfirmImage.value = true;
       return true;
     } catch (e) {
-      debugPrint('Error == $e');
+      debugPrint('Error = $e');
       return false;
     }
+    // }
   }
 
   @override
