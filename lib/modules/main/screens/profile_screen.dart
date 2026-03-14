@@ -134,7 +134,7 @@ class ProfileScreen extends GetView<ProfileController> {
             ),
           ),
 
-          const SizedBox(height: 100),
+          const SizedBox(height: 75),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
             decoration: BoxDecoration(

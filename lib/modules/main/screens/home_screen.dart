@@ -3,6 +3,7 @@ import 'package:gamified_todo_app/modules/main/controllers/profile_controller.da
 import 'package:gamified_todo_app/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:shadow_log/shadow_log.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import '../controllers/home_controller.dart';
 part '../widgets/_cart_widget.dart';
 
@@ -28,24 +29,46 @@ class HomeScreen extends GetView<HomeController> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text('Good Morning,'),
+                              Obx(() {
+                                String greeting = controller
+                                    .getTimeForGreeting();
+                                return Text(
+                                  greeting,
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                );
+                              }),
                               Obx(() {
                                 return Padding(
                                   padding: EdgeInsets.only(left: 40),
                                   child: controller.username.value == ''
-                                      ? Text(
-                                          'Username',
-                                          style: TextStyle(
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.bold,
-                                            color: const Color.fromARGB(
-                                              255,
-                                              1,
-                                              255,
-                                              10,
+                                      ? Skeletonizer(
+                                          child: Bone.text(
+                                            words: 1,
+                                            style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color.fromARGB(
+                                                255,
+                                                1,
+                                                255,
+                                                10,
+                                              ),
                                             ),
                                           ),
                                         )
+                                      // ? Text(
+                                      //     'Username',
+                                      //     style: TextStyle(
+                                      //       fontSize: 17,
+                                      //       fontWeight: FontWeight.bold,
+                                      //       color: const Color.fromARGB(
+                                      //         255,
+                                      //         1,
+                                      //         255,
+                                      //         10,
+                                      //       ),
+                                      //     ),
+                                      //   )
                                       : Text(
                                           controller.username.value,
                                           style: TextStyle(
@@ -63,19 +86,24 @@ class HomeScreen extends GetView<HomeController> {
                               }),
                             ],
                           ),
-                          Obx(
-                            () => CircleAvatar(
-                              radius: 25.9,
-                              child: CircleAvatar(
-                                radius: 25.0,
-                                backgroundImage:
-                                    profileController.isConfirmImage.value ==
-                                        true
-                                    ? FileImage(profileController.image.value!)
-                                          as ImageProvider
-                                    : AssetImage(
-                                        'assets/images/commons/profile_empty.png',
-                                      ),
+                          GestureDetector(
+                            onTap: () => Get.toNamed(AppRoutes.profile),
+                            child: Obx(
+                              () => CircleAvatar(
+                                radius: 25.9,
+                                child: CircleAvatar(
+                                  radius: 25.0,
+                                  backgroundImage:
+                                      profileController.isConfirmImage.value ==
+                                          true
+                                      ? FileImage(
+                                              profileController.image.value!,
+                                            )
+                                            as ImageProvider
+                                      : AssetImage(
+                                          'assets/images/commons/profile_empty.png',
+                                        ),
+                                ),
                               ),
                             ),
                           ),
@@ -88,11 +116,6 @@ class HomeScreen extends GetView<HomeController> {
                             Obx(
                               () => Text(
                                 'Level ${controller.levelTotal.value}',
-                                // style: TextStyle(
-                                //   fontSize: 38,
-                                //   fontWeight: FontWeight.bold,
-                                //   wordSpacing: 3,
-                                // ),
                                 style: TextStyle(
                                   fontSize: 38.0,
                                   fontWeight: FontWeight.bold,
@@ -139,7 +162,7 @@ class HomeScreen extends GetView<HomeController> {
                                 ),
                                 Obx(
                                   () => Text(
-                                    '${controller.levelXp.value}/100.0 XP',
+                                    '${controller.levelXp.value}/100 XP',
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
@@ -151,7 +174,38 @@ class HomeScreen extends GetView<HomeController> {
                               ],
                             ),
 
-                            Obx(() => _buildProcessColor()),
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 15),
+                              child: Obx(
+                                () => LinearProgressIndicator(
+                                  value: controller.levelXp.value / 100,
+
+                                  color: Colors.red,
+                                  backgroundColor: Colors.grey[300],
+                                  borderRadius: BorderRadius.circular(15),
+                                  minHeight: 10,
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    controller.levelXp.value >= 90
+                                        ? const Color(0xFF00FF0A) // vivid green
+                                        : controller.levelXp.value >= 80
+                                        ? const Color(0xFF00E525) // green
+                                        : controller.levelXp.value > 70
+                                        ? const Color(0xFF69FF47) // light green
+                                        : controller.levelXp.value > 60
+                                        ? const Color(0xFFB2FF00) // lime
+                                        : controller.levelXp.value > 50
+                                        ? const Color(0xFFFFFF00) // yellow
+                                        : controller.levelXp.value > 40
+                                        ? const Color(0xFFFFCC00) // amber
+                                        : controller.levelXp.value > 30
+                                        ? const Color(0xFFFF9900) // orange
+                                        : controller.levelXp.value > 20
+                                        ? const Color(0xFFFF5500) // deep orange
+                                        : const Color(0xFFFF1100), // red
+                                  ),
+                                ),
+                              ),
+                            ),
 
                             Text(
                               'Daily Goal\nProcess',
@@ -225,13 +279,15 @@ class HomeScreen extends GetView<HomeController> {
                     SizedBox(width: 10),
                     Expanded(
                       child: Container(
-                        height: 52.5,
+                        height: 53.3,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 1, 255, 10),
+                          color: const Color.fromARGB(255, 0, 255, 72),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: IconButton(
-                          onPressed: controller.AddTaskTap,
+                          onPressed: () {
+                            Get.toNamed(AppRoutes.addTask);
+                          },
                           icon: Icon(Icons.add, color: Colors.black),
                         ),
                       ),
@@ -246,33 +302,10 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  Widget _buildProcessColor() {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 15),
-      child: LinearProgressIndicator(
-        value: controller.levelXp.value / 100,
-        color: Colors.red,
-        backgroundColor: Colors.grey[300],
-        borderRadius: BorderRadius.circular(15),
-        minHeight: 10,
-        valueColor: AlwaysStoppedAnimation<Color>(
-          controller.levelXp.value >= 80
-              ? Colors.green
-              : controller.levelXp.value > 70
-              ? Colors.lightGreenAccent
-              : controller.levelXp.value > 60
-              ? Color(0xFFCCFF00)
-              : controller.levelXp.value > 50
-              ? Color(0xFFFFCC00)
-              : controller.levelXp.value > 40
-              ? Color(0xFFFF9900)
-              : controller.levelXp.value > 30
-              ? Color(0xFFFF6600)
-              : controller.levelXp.value > 20
-              ? Color(0xFFFF3300)
-              : Color(0xFFFF0000),
-        ),
-      ),
-    );
-  }
+  // Widget _buildProcessColor() {
+  //   // if (controller.levelXp.value <= 100) {
+  //   //   controller.levelXp.value = 100;
+  //   // }
+  //   return
+  // }
 }

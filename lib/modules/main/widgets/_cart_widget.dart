@@ -20,6 +20,10 @@ class _CartWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         ShadowLog.i('Cart Got Tapped');
+
+        if (controller.levelXp.value < 100) {
+          controller.levelXp.value++;
+        }
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.278,

@@ -1,5 +1,4 @@
 import 'package:gamified_todo_app/modules/main/controllers/profile_controller.dart';
-import 'package:gamified_todo_app/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:shadow_log/shadow_log.dart';
 
@@ -14,13 +13,11 @@ class HomeController extends GetxController {
 
   RxString username = ''.obs;
   var levelTotal = 72.obs;
-  var levelXp = 71.0.obs;
+  RxDouble levelXp = 45.0.obs;
 
   var completedNumber = 0.obs;
   var currentStreakNumber = 7.obs;
   var totalXpNumber = 16.obs;
-
-  //
 
   void increaseCounter() {
     // completedNumber.value++;
@@ -31,9 +28,16 @@ class HomeController extends GetxController {
     ShadowLog.i('${levelXp.value}');
   }
 
-  void AddTaskTap() {
-    increaseCounter();
-    Get.toNamed(AppRoutes.addTask);
+  String getTimeForGreeting() {
+    final hour = DateTime.now().hour.obs;
+    if (hour >= 5 && hour < 12) {
+      return 'Good Morning,';
+    } else if (hour >= 12 && hour < 5) {
+      return 'Good Afternoon,';
+    } else if (hour >= 5 && hour < 9) {
+      return 'Good Evening,';
+    }
+    return 'Good Night, ';
   }
 
   void loadingUsername() {
@@ -44,10 +48,5 @@ class HomeController extends GetxController {
     profileController.usernameController.addListener(() {
       username.value = profileController.usernameController.text;
     });
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 }

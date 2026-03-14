@@ -139,11 +139,18 @@ class EditProfileScreen extends GetView<ProfileController> {
                             await Future.delayed(Duration(seconds: 1), () {
                               Get.back();
                             });
+
                             Get.snackbar(
                               'Success',
                               'Profile have been updated.',
                               backgroundColor: Colors.green,
-                              duration: Duration(seconds: 1)
+                              duration: Duration(seconds: 1),
+                            );
+                          } else {
+                            Get.snackbar(
+                              'Failed',
+                              'Invalid username or bio',
+                              backgroundColor: Colors.redAccent,
                             );
                           }
                         },

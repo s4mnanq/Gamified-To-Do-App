@@ -9,7 +9,6 @@ class ProfileController extends GetxController {
   final formKey = GlobalKey<FormState>();
   final image = Rxn<File>();
   RxBool isConfirmImage = false.obs;
-
   RxString username = ''.obs;
   RxString bio = ''.obs;
 
@@ -90,28 +89,22 @@ class ProfileController extends GetxController {
         return false;
       }
       if (image.value == null) {
-        Get.snackbar(
-          'Failed',
-          'Please select an image profile',
-          backgroundColor: Colors.redAccent,
-        );
-        debugPrint('No image selected');
-        // isConfirmImage = false.obs;
         isConfirmImage.value = false;
-        return false;
+        return true;
+      } else if (image.value != null) {
+        isConfirmImage.value = true;
+        return true;
       }
-
       // if(success){
       debugPrint('Username = ${usernameController.text}');
       debugPrint('Bio = ${bioController.text}');
-      // isConfirmImage = true.obs;
+
       isConfirmImage.value = true;
       return true;
     } catch (e) {
       debugPrint('Error = $e');
       return false;
     }
-    // }
   }
 
   @override
