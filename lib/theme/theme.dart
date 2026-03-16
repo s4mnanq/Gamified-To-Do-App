@@ -20,6 +20,7 @@ class AppTheme {
 
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
+    fontFamily: 'Oxanium',
     colorScheme: ColorScheme.dark(
       primary: neonGreen,
       secondary: darkGreen,
@@ -37,6 +38,7 @@ class AppTheme {
       centerTitle: true,
       titleTextStyle: TextStyle(
         color: textWhite,
+        fontFamily: 'Oxanium',
         fontSize: 22,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.5,
@@ -63,6 +65,7 @@ class AppTheme {
         textStyle: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w700,
+          fontFamily: 'Oxanium',
           letterSpacing: 0.5,
         ),
       ),
@@ -71,7 +74,11 @@ class AppTheme {
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: neonGreen,
-        textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        textStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          fontFamily: 'Oxanium',
+        ),
       ),
     ),
 
@@ -95,18 +102,21 @@ class AppTheme {
         color: textGray,
         fontSize: 16,
         fontWeight: FontWeight.w400,
+        fontFamily: 'Oxanium',
       ),
 
       labelStyle: const TextStyle(
         color: textGray,
         fontSize: 14,
         fontWeight: FontWeight.w500,
+        fontFamily: 'Oxanium',
       ),
 
       errorStyle: const TextStyle(
         color: errorRed,
         fontSize: 13,
         fontWeight: FontWeight.w500,
+        fontFamily: 'Oxanium',
       ),
 
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
@@ -121,11 +131,13 @@ class AppTheme {
         color: textWhite,
         fontSize: 32,
         fontWeight: FontWeight.bold,
+        fontFamily: 'Oxanium',
       ),
       displayMedium: TextStyle(
         color: textWhite,
         fontSize: 28,
         fontWeight: FontWeight.bold,
+        fontFamily: 'Oxanium',
       ),
 
       // Titles
@@ -133,16 +145,19 @@ class AppTheme {
         color: textWhite,
         fontSize: 22,
         fontWeight: FontWeight.w600,
+        fontFamily: 'Oxanium',
       ),
       titleMedium: TextStyle(
         color: textWhite,
         fontSize: 18,
         fontWeight: FontWeight.w600,
+        fontFamily: 'Oxanium',
       ),
       titleSmall: TextStyle(
         color: textWhite,
         fontSize: 16,
         fontWeight: FontWeight.w600,
+        fontFamily: 'Oxanium',
       ),
 
       // Body text
@@ -150,16 +165,19 @@ class AppTheme {
         color: textWhite,
         fontSize: 16,
         fontWeight: FontWeight.w400,
+        fontFamily: 'Oxanium',
       ),
       bodyMedium: TextStyle(
         color: textGray,
         fontSize: 14,
         fontWeight: FontWeight.w400,
+        fontFamily: 'Oxanium',
       ),
       bodySmall: TextStyle(
         color: textGray,
         fontSize: 12,
         fontWeight: FontWeight.w400,
+        fontFamily: 'Oxanium',
       ),
 
       // Labels
@@ -167,16 +185,19 @@ class AppTheme {
         color: textWhite,
         fontSize: 14,
         fontWeight: FontWeight.w600,
+        fontFamily: 'Oxanium',
       ),
       labelMedium: TextStyle(
         color: textGray,
         fontSize: 12,
         fontWeight: FontWeight.w500,
+        fontFamily: 'Oxanium',
       ),
       labelSmall: TextStyle(
         color: textGray,
         fontSize: 11,
         fontWeight: FontWeight.w500,
+        fontFamily: 'Oxanium',
       ),
     ),
 

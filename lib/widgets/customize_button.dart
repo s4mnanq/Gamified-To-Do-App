@@ -61,14 +61,14 @@ class CustomizeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final hasPrefix = prefix != null;
     final hasSuffix = suffix != null;
-    final effectiveColor = buttonColor ?? context.theme.colorScheme.primary;
+    final effectiveColor = buttonColor ?? context.theme.colorScheme.secondary;
     final effectiveRadius = (borderRadius ?? BorderRadius.circular(12)).resolve(
       Directionality.of(context),
     );
     final effectiveTextStyle =
         textStyle ??
         context.textTheme.bodyMedium?.copyWith(
-          color: context.theme.colorScheme.onPrimary,
+          color: context.theme.colorScheme.onSecondary,
         );
 
     return Opacity(
@@ -117,7 +117,7 @@ class _LoadingIndicator extends StatelessWidget {
         child: CircularProgressIndicator(
           strokeWidth: 2,
           valueColor: AlwaysStoppedAnimation<Color>(
-            context.theme.colorScheme.onPrimary,
+            context.theme.colorScheme.onSecondary,
           ),
         ),
       ),
