@@ -96,4 +96,10 @@ final appPages = [
     page: () => EditProfileScreen(),
     binding: ProfileBinding(),
   ),
+
+  GetPage(
+    name: AppRoutes.calendar,
+    page: () => CalendarScreen(),
+    binding: CalendarBinding(),
+  ),
 ];

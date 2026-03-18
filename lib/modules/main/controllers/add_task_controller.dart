@@ -20,7 +20,6 @@ class AddTaskController extends GetxController {
   final priorityCategory = TaskPriority.values.map((e) => e.value).toList();
   final selectedPriorityIndex = 0.obs;
   final selectedPriority = ''.obs;
-
   // Global key __
   final formKey = GlobalKey<FormState>();
 

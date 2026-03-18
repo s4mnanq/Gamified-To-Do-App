@@ -14,7 +14,7 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   flutter_secure_storage: ^10.0.0
   flutter_dotenv: ^6.0.0
-  flutter_native_splash: ^2.4.
+  flutter_native_splash: ^2.4.0
   shadow_log: ^0.2.0
   image_picker: ^1.2.1
   flutter_image_compress: ^2.4.0

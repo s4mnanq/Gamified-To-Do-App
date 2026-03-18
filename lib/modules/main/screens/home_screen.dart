@@ -156,15 +156,15 @@ class HomeScreen extends GetView<HomeController> {
                                 const Text(
                                   'Level XP',
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Obx(
                                   () => Text(
-                                    '${controller.levelXp.value}/100 XP',
+                                    '${controller.levelXp.value.toInt()}/100 XP',
                                     style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.w600,
                                       wordSpacing: 2.0,
                                       letterSpacing: 0.5,
@@ -210,7 +210,7 @@ class HomeScreen extends GetView<HomeController> {
                             Text(
                               'Daily Goal\nProcess',
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
