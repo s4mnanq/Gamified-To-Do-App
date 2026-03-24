@@ -86,6 +86,7 @@ class EditProfileScreen extends GetView<ProfileController> {
                           children: [
                             Text(
                               'Username',
+
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,

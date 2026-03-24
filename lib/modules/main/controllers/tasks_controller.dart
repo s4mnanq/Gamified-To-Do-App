@@ -134,5 +134,4 @@ class TasksController extends GetxController {
         })
         .toList();
   }
-  
 }

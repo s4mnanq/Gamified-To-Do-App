@@ -56,19 +56,6 @@ class HomeScreen extends GetView<HomeController> {
                                             ),
                                           ),
                                         )
-                                      // ? Text(
-                                      //     'Username',
-                                      //     style: TextStyle(
-                                      //       fontSize: 17,
-                                      //       fontWeight: FontWeight.bold,
-                                      //       color: const Color.fromARGB(
-                                      //         255,
-                                      //         1,
-                                      //         255,
-                                      //         10,
-                                      //       ),
-                                      //     ),
-                                      //   )
                                       : Text(
                                           controller.username.value,
                                           style: TextStyle(
@@ -86,6 +73,7 @@ class HomeScreen extends GetView<HomeController> {
                               }),
                             ],
                           ),
+
                           GestureDetector(
                             onTap: () => Get.toNamed(AppRoutes.profile),
                             child: Obx(
@@ -109,6 +97,7 @@ class HomeScreen extends GetView<HomeController> {
                           ),
                         ],
                       ),
+
                       const SizedBox(height: 20),
                       Center(
                         child: Column(
@@ -137,7 +126,6 @@ class HomeScreen extends GetView<HomeController> {
                       const SizedBox(height: 20.0),
                       Container(
                         padding: EdgeInsets.all(16),
-
                         // width: MediaQuery.of(context).size.width * 29,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
@@ -218,7 +206,6 @@ class HomeScreen extends GetView<HomeController> {
                         ),
                       ),
                       const SizedBox(height: 20),
-
                       //
                       IntrinsicHeight(
                         child: Row(
@@ -248,7 +235,6 @@ class HomeScreen extends GetView<HomeController> {
                   ),
                 ),
               ),
-              //
               Positioned(
                 right: 16,
                 left: 16,
@@ -301,11 +287,11 @@ class HomeScreen extends GetView<HomeController> {
       ),
     );
   }
-
   // Widget _buildProcessColor() {
   //   // if (controller.levelXp.value <= 100) {
   //   //   controller.levelXp.value = 100;
   //   // }
-  //   return
+  //   return Container
+
   // }
 }

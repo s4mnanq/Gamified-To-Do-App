@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gamified_todo_app/core/utils/date_picker.dart';
 import 'package:gamified_todo_app/modules/main/controllers/add_task_controller.dart';
-
 import 'package:get/get.dart';
 import 'package:shadow_log/shadow_log.dart';
 part '../widgets/priority_widget.dart';
@@ -37,8 +36,8 @@ class AddTaskScreen extends GetView<AddTaskController> {
                                 debugPrint('title value : $title');
                               },
                               decoration: InputDecoration(
-                                label: Text('Title'),
-                                hint: Text(' Enter Task name'),
+                                labelText: 'Title',
+                                hintText: ' Enter Task name',
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                   borderSide: BorderSide(color: Colors.grey),
@@ -61,9 +60,10 @@ class AddTaskScreen extends GetView<AddTaskController> {
                               onChanged: (value) {
                                 debugPrint('description value $value');
                               },
+
                               decoration: InputDecoration(
-                                label: Text('Description'),
-                                hint: Text(' Enter more detail'),
+                                labelText: 'Description',
+                                hintText: 'Enter more detail',
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide: BorderSide(color: Colors.grey),
@@ -88,7 +88,7 @@ class AddTaskScreen extends GetView<AddTaskController> {
 
                               decoration: InputDecoration(
                                 labelText: 'Due',
-                                hint: Text('Day / Month / Year'),
+                                hintText: 'Day / Month / Year',
                                 prefixIcon: Icon(Icons.calendar_month_outlined),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
@@ -143,8 +143,8 @@ class AddTaskScreen extends GetView<AddTaskController> {
                             TextFormField(
                               controller: controller.xpValueController,
                               decoration: InputDecoration(
-                                label: Text('Value Xp'),
-                                hint: Text('0'),
+                                labelText: 'Value Xp',
+                                hintText: '0',
                                 prefixIcon: Icon(Icons.input_rounded),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),

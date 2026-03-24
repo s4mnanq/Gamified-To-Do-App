@@ -1,8 +1,9 @@
+import 'package:contribution_heatmap/contribution_heatmap.dart';
 import 'package:flutter/material.dart';
 import 'package:gamified_todo_app/theme/theme.dart';
 import 'package:gamified_todo_app/theme/theme_extensions.dart';
 import 'package:get/get.dart';
-import 'package:contribution_heatmap/contribution_heatmap.dart';
+
 import '../controllers/calendar_controller.dart';
 
 class CalendarScreen extends GetView<CalendarController> {
