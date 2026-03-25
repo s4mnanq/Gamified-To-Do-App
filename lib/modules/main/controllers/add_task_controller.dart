@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gamified_todo_app/core/constants/task_priority.dart';
 import 'package:gamified_todo_app/modules/main/controllers/main_controller.dart';
-// import 'package:gamified_todo_app/modules/main/controllers/main_controller.dart';
 import 'package:gamified_todo_app/modules/main/model/task_model.dart';
 import 'package:get/get.dart';
 import './tasks_controller.dart';

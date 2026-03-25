@@ -5,8 +5,8 @@ import 'package:gamified_todo_app/repositories/auth_repository.dart';
 import 'package:get/get.dart';
 import 'package:shadow_log/shadow_log.dart';
 
-import 'env/app_config.dart';
 import 'app.dart';
+import 'env/app_config.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
